@@ -58,8 +58,12 @@
 	        },
 	        error: function (jqXHR, textStatus, errorThrown)
 	        {
-	            $("#notif").html('<p>'+jqXHR.responseJSON.message+'</p>');
-	            console.log(jqXHR.responseJSON);
+              if(jqXHR.responseJSON.message.email){
+	             $("#notif").html('<p class="alert alert-danger">'+jqXHR.responseJSON.message.email+'</p>'); 
+              }else{
+               $("#notif").html('<p class="alert alert-danger">'+jqXHR.responseJSON.message.password+'</p>'); 
+              }
+	            console.log(jqXHR.responseJSON.message);
 	        }
 	    });
 	  })
